@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import CollectionItem from '../../components/CollectionItem/CollectionItem.component';
 import { selectCollection } from '../../redux/Shop/Shop.selector';
-import { IItem, IRootState } from '../../types';
+import { ICollection, IItem, IRootState } from '../../types';
 import {
   CollectionPageContainer,
   CollectionPageItems,
@@ -15,11 +15,15 @@ interface IShopParams {
   collectionId: string;
 }
 
-const CollectionPage: React.FC = () => {
+interface IProps {
+  collection: ICollection;
+}
+
+const CollectionPage: React.FC<IProps> = ({ collection }) => {
   const { collectionId } = useParams<IShopParams>();
-  const collection = useSelector((state: IRootState) =>
-    selectCollection(collectionId)(state)
-  );
+  // const collection = useSelector((state: IRootState) =>
+  //   selectCollection(collectionId)(state)
+  // );
 
   return (
     <CollectionPageContainer>
